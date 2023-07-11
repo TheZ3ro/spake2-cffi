@@ -1,0 +1,3 @@
+[submodule "c/spake2-c"]
+	path = c/spake2-c
+	url = https://github.com/MuntashirAkon/spake2-c.git
