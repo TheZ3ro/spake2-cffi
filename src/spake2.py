@@ -13,7 +13,7 @@ class Spake2:
         _their_name = ffi.new("uint8_t[]", their_name)
         self._ctx = lib.SPAKE2_CTX_new(my_role, _my_name, len(my_name), _their_name, len(their_name))
 
-    def generate_message(self, password):
+    def generate_msg(self, password):
         _out_msg = ffi.new("uint8_t[]", lib.SPAKE2_MAX_MSG_SIZE)
         _out_msg_len = ffi.new("size_t *")
         _out_msg_len[0] = 0
