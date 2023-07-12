@@ -5,7 +5,7 @@ from cffi import FFI
 ffibuilder = FFI()
 
 
-base_src = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+base_src = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 cpp_path = os.path.join(base_src, "cpp/spake2-c")
 cpp_build_path = cpp_path
 
