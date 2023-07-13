@@ -1,33 +1,27 @@
-import json
-
 import os
+
+from pathlib import Path
+
 from cffi import FFI
 ffibuilder = FFI()
 
-
-base_src = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-cpp_path = os.path.join(base_src, "cpp/spake2-c")
-cpp_build_path = cpp_path
+cpp_path = Path("cpp") / "spake2-c"
 
 sources = []
-sources.append(os.path.join(cpp_path, "sha512.c"))
-sources.append(os.path.join(cpp_path, "spake2.c"))
+sources.append(str(cpp_path / "sha512.c"))
+sources.append(str(cpp_path / "spake2.c"))
 
 include_dirs = []
-include_dirs.append(os.path.join(cpp_path, "include"))
-include_dirs.append(cpp_build_path)
-
-libraries = ["c"]
+include_dirs.append(str(cpp_path / "include"))
+include_dirs.append(str(cpp_path))
 
 ffibuilder.set_source(
-    "_spake2",
+    "_spake2_cffi",
     """
-    #include <spake2/spake2.h>
-
+    #include "spake2/spake2.h"
     """,
-    sources=sources,
     include_dirs=include_dirs,
-    libraries=libraries,
+    sources=sources,
 )
 
 ffibuilder.cdef("""
@@ -74,3 +68,6 @@ extern int SPAKE2_process_msg(struct spake2_ctx_st *ctx,
                     size_t max_out_key_len, const uint8_t *their_msg,
                     size_t their_msg_len);
 """)
+
+if __name__ == "__main__":
+    ffibuilder.compile(verbose=True)

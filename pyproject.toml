@@ -1,0 +1,52 @@
+[build-system]
+requires = [
+    "setuptools>=45",
+    "setuptools_scm[toml]>=6.2",
+    "wheel",
+    "cffi>=1.0.0; platform_python_implementation != 'PyPy'",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spake2-cffi"
+description = "spake2-c python CFFI bindings"
+authors = [
+    {name = "Davide TheZero", email = "io@thezero.org"},
+]
+dynamic = ["version", "license"]
+readme = { content-type = "text/markdown", file = "README.md" }
+keywords = ["spake2", "bindings"]
+requires-python = ">=3.8"
+dependencies = [
+    "cffi>=1.0.0",
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: BSD",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Source = "https://github.com/TheZ3ro/spake2-cffi"
+
+[tool.setuptools.dynamic]
+version = {attr = "spake2.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

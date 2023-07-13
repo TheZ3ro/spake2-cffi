@@ -12,7 +12,7 @@ sys.path.insert(0, src_dir)
 
 setup(name="spake2-cffi",
       py_modules=["spake2-c"],
-      setup_requires=["cffi"],
       cffi_modules=["src/spake2/build_spake2.py:ffibuilder"],
-      install_requires=["cffi"],
+      setup_requires=["cffi>=1.0.0"],
+      install_requires=["cffi>=1.0.0"],
       )

@@ -1,0 +1,7 @@
+include LICENSE
+include README.md
+
+recursive-include src/spake2 *.py
+graft cpp/spake2-c
+
+recursive-exclude .github *

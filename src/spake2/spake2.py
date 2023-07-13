@@ -1,4 +1,4 @@
-from _spake2 import lib, ffi
+from _spake2_cffi import lib, ffi
 
 class Spake2:
     Alice = lib.spake2_role_alice
