@@ -10,6 +10,7 @@ concurrency:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
 
@@ -96,11 +97,11 @@ jobs:
               arch: aarch64
               build: "*musllinux_aarch64"
 
-          - os: windows-2019
-            name: win_amd64
-            architecture: x64
-            cibw:
-              build: "cp*win_amd64"
+          #- os: windows-2019
+          #  name: win_amd64
+          #  architecture: x64
+          #  cibw:
+          #    build: "cp*win_amd64"
 
     steps:
       - name: Checkout spake2 repository
@@ -146,5 +147,3 @@ jobs:
 
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository-url: https://test.pypi.org/legacy/
