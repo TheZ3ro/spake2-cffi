@@ -145,5 +145,13 @@ jobs:
         with:
           path: dist
 
+      - name: Move artifacts
+        run: |
+          find . -name "*.gz" -exec mv {} dist/ \;
+          find . -name "*.whl" -exec mv {} dist/ \;
+          rm -rf dist/sdist/
+          rm -rf dist/wheels-*
+          ls -al dist/
+
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
